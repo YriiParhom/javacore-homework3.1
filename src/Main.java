@@ -29,9 +29,9 @@ public class Main {
         createFile("D:" + separator + separator + "Games" + separator + "temp" + separator, "temp.txt");
 
         try (FileWriter writer =
-                     new FileWriter("D:"  + separator + separator + "Games" + separator + "temp" + separator + "temp" +
+                     new FileWriter("D:" + separator + separator + "Games" + separator + "temp" + separator + "temp" +
                              ".txt",
-                false)) {
+                             false)) {
             writer.write(String.valueOf(sb));
         } catch (IOException ex) {
             System.out.println("Запсиь файла не удалась \n");
