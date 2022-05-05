@@ -4,13 +4,14 @@ import java.io.IOException;
 
 public class Main {
     private static StringBuilder sb = new StringBuilder();
+
     public static void main(String[] args) {
         String separator = File.separator;
         Character pathSeparator = File.pathSeparatorChar;
 
         String folderUrlGames = "D:" + separator + separator + "Games" + separator;
-        String folderURLSrc = "D:" + separator + separator + separator + "Games" + separator+ "src" + separator;
-        String folderURLGamesRes = "D:" + pathSeparator + separator +"Games" + separator + "res" +separator;
+        String folderURLSrc = "D:" + separator + separator + separator + "Games" + separator + "src" + separator;
+        String folderURLGamesRes = "D:" + pathSeparator + separator + "Games" + separator + "res" + separator;
         String fileURLGamesSrcMain = "D:" + separator + separator + "Games" + separator + "src" + separator +
                 "main" + separator;
 
@@ -27,7 +28,10 @@ public class Main {
         createFile(fileURLGamesSrcMain, "util.java");
         createFile("D:" + separator + separator + "Games" + separator + "temp" + separator, "temp.txt");
 
-        try (FileWriter writer = new FileWriter("D://Games/temp//temp.txt", false)) {
+        try (FileWriter writer =
+                     new FileWriter("D:"  + separator + separator + "Games" + separator + "temp" + separator + "temp" +
+                             ".txt",
+                false)) {
             writer.write(String.valueOf(sb));
         } catch (IOException ex) {
             System.out.println("Запсиь файла не удалась \n");
@@ -35,7 +39,8 @@ public class Main {
 
         System.out.println("Установка завершена");
     }
-    public static StringBuilder createFolder(String url, String name){
+
+    public static StringBuilder createFolder(String url, String name) {
 
         var dirSrc = new File(url + name);
         if (dirSrc.mkdir()) {
@@ -43,7 +48,8 @@ public class Main {
         }
         return sb;
     }
-    public static StringBuilder createFile(String url, String fileName){
+
+    public static StringBuilder createFile(String url, String fileName) {
         var fileUtilSrcMain = new File(url, fileName);
         try {
             if (fileUtilSrcMain.createNewFile()) sb.append("Файл ").append(fileName).append(" был создан \n");
